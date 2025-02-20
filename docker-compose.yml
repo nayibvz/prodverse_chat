@@ -1,0 +1,71 @@
+version: "3.8"
+
+services:
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4j
+    # Solo usamos la variable necesaria para la autenticación.
+    environment:
+      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD}
+    ports:
+      - "7474:7474"  # Interfaz web de Neo4j
+      - "7687:7687"  # Protocolo Bolt
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+    networks:
+      - mi_red
+
+  api:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: mi_api
+    depends_on:
+      - neo4j
+    env_file: .env
+    environment:
+      - NEO4J_URI=bolt://neo4j:7687
+    ports:
+      - "8000:8000"  # La API se expondrá en el puerto 8000
+    networks:
+      - mi_red
+    command: ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+
+  streamlit_app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: streamlit_app
+    depends_on:
+      - neo4j
+    env_file: .env
+    environment:
+      - NEO4J_URI=bolt://neo4j:7687
+    ports:
+      - "8501:8501"  # La interfaz de Streamlit se expondrá en el puerto 8501
+    networks:
+      - mi_red
+    command: ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
+  run_all:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: run_all
+    depends_on:
+      - neo4j
+    env_file: .env
+    environment:
+      - NEO4J_URI=bolt://neo4j:7687
+    command: ["python", "run_all.py"]
+    networks:
+      - mi_red
+    restart: "no"
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+
+networks:
+  mi_red:
