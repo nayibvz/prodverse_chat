@@ -18,22 +18,9 @@ Pipeline Automatizado: Integración de scripts ETL orquestados mediante Docker y
 Estructura del Proyecto
 La estructura del repositorio es la siguiente:
 
-bash
-Copiar
-mi_proyecto/
-│
-├── app/
-│   ├── api.py                 # API principal (FastAPI)
-│   ├── app.py                 # Aplicación de Streamlit para la interfaz de chat
-│   ├── chunking.py            # Funciones para dividir archivos en chunks
-│   ├── download_packages.py   # Script para descargar archivos de GitHub
-│   ├── run_all.py             # Script que orquesta la ejecución completa del pipeline ETL
-│   ├── store_embedding.py     # Script para generar embeddings y almacenar los datos en Neo4j
-│   └── requirements.txt       # Dependencias del proyecto
-│
-├── docker-compose.yml         # Orquestación de contenedores (API, Streamlit, Neo4j, etc.)
-├── Dockerfile                 # Dockerfile para construir la imagen de la aplicación
-└── README.md                  # Documentación del proyecto (este archivo)
+
+
+
 Instalación y Ejecución
 1. Variables de Entorno
 Crea un archivo .env en la raíz del proyecto (no lo subas a GitHub) con el siguiente contenido:
@@ -73,8 +60,8 @@ Seleccionar el paquete de interés (por ejemplo, faucet o taplock).
 Escribir la pregunta en el campo de entrada.
 Recibir la respuesta generada por el sistema, que utiliza el enfoque RAG para combinar información recuperada de la documentación con la capacidad de generación de texto de OpenAI.
 Consultas a la API
-La API permite realizar:
 
+La API permite realizar:
 Búsquedas de chunks: Recupera nodos de tipo Chunk mediante filtros.
 Búsquedas semánticas: Utiliza la similitud de coseno entre embeddings para ordenar los resultados.
 Respuestas mediante chat (RAG): Filtra las consultas fuera de dominio y genera respuestas detalladas.
