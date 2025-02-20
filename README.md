@@ -18,7 +18,7 @@ API de Consulta: Desarrollo de una API en FastAPI que permite realizar búsqueda
 Interfaz de Usuario: Implementación de una interfaz en Streamlit que permite a los usuarios interactuar mediante un chat.
 Pipeline Automatizado: Integración de scripts ETL orquestados mediante Docker y Docker Compose para actualizar y gestionar la información.
 
-##Instalación y Ejecución
+## Instalación y Ejecución
 
 ## 1. Variables de Entorno
 Crea un archivo .env en la raíz del proyecto (no lo subas a GitHub) con el siguiente contenido:
