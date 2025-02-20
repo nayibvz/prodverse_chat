@@ -15,27 +15,19 @@ Almacenamiento en Grafos: Indexación de los chunks en Neo4j junto con metadatos
 API de Consulta: Desarrollo de una API en FastAPI que permite realizar búsquedas semánticas y responder preguntas utilizando el enfoque RAG.
 Interfaz de Usuario: Implementación de una interfaz en Streamlit que permite a los usuarios interactuar mediante un chat.
 Pipeline Automatizado: Integración de scripts ETL orquestados mediante Docker y Docker Compose para actualizar y gestionar la información.
-Estructura del Proyecto
-La estructura del repositorio es la siguiente:
-
-
-
 
 Instalación y Ejecución
 1. Variables de Entorno
 Crea un archivo .env en la raíz del proyecto (no lo subas a GitHub) con el siguiente contenido:
 
-dotenv
-Copiar
 OPENAI_API_KEY=sk-...  # Tu API Key de OpenAI
 NEO4J_PASSWORD=testing1
 NEO4J_URI=bolt://neo4j:7687  # O "bolt://localhost:7687" si se ejecuta localmente
 GITHUB_TOKEN=github_pat_...
+
 2. Construcción y Ejecución con Docker Compose
 El proyecto se orquesta mediante Docker Compose. Para construir y levantar todos los contenedores, ejecuta:
 
-bash
-Copiar
 docker-compose up --build
 Esto levantará los siguientes servicios:
 
