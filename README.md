@@ -35,13 +35,14 @@ El proyecto se orquesta mediante Docker Compose. Para construir y levantar todos
 
 ```
 docker-compose up --build
-Esto levantará los siguientes servicios:
 ```
 
-### Neo4j: Base de datos de grafos.
-### API: Servicio que expone la API desarrollada con FastAPI.
-### Streamlit App: Interfaz de usuario tipo chat para interactuar con la API.
-### ETL Pipeline (run_all): Script que descarga la documentación, realiza el chunking y almacena los datos en Neo4j.
+Esto levantará los siguientes servicios:
+
+#### Neo4j: Base de datos de grafos.
+#### API: Servicio que expone la API desarrollada con FastAPI.
+#### Streamlit App: Interfaz de usuario tipo chat para interactuar con la API.
+#### ETL Pipeline (run_all): Script que descarga la documentación, realiza el chunking y almacena los datos en Neo4j.
 
 ## 3. Acceso a la Aplicación
 Interfaz de Usuario (Streamlit):
